@@ -21,7 +21,7 @@
     <main>
         <h1 class="text-center py-3">Ex10 - Fetch Data from reqres.in</h1>
         <div class="container">
-            <button class="btn btn-primary">Fetch Data</button>
+            <button class="btn btn-primary" onclick="fetchData()">Fetch Data</button>
             <ul class="list-group py-3" id="myList">
                 <li class="list-group-item" style="color: green">name - year</li>
             </ul>
@@ -38,6 +38,23 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
         integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
         </script>
+
+    <script>
+        async function fetchData() {
+            let res = await fetch('https://reqres.in/api/unknown');
+            let json = await res.json();
+            let list = document.querySelector('#myList');
+            list.innerHTML = '';
+            json.data.forEach(item => {
+                let li = document.createElement('li');
+                li.className = 'list-group-item';
+                li.style.color = item.color;
+                li.innerText = `${item.name} - ${item.year}`;
+                myList.appendChild(li);
+            });
+        }
+    </script>
+
 </body>
 
 </html>
