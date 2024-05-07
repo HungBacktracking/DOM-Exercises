@@ -50,6 +50,16 @@
         integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
         </script>
 
+    <script>
+        document.querySelectorAll('.bi-trash-fill').forEach(item => {
+            item.onclick = () => {
+                if (confirm("Do you really want to remove this item?")) {
+                    item.parentElement.remove();
+                }
+            }
+        });
+    </script>
+
 </body>
 
 </html>
