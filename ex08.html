@@ -21,7 +21,7 @@
     <main>
         <h1 class="text-center py-3">Ex08 - Edit Item</h1>
         <div class="container">
-            <form action="#" method="post">
+            <form action="#" method="post" onsubmit="process(event)">
                 <div class="mb-3">
                     <label for="" class="form-label">Item</label>
                     <input type="text" class="form-control" name="keyword" id="keyword" aria-describedby="helpId"
@@ -55,6 +55,26 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
         integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
         </script>
+
+    <script>
+        document.querySelectorAll('.bi-pencil-fill').forEach(item => {
+            let keyword = document.querySelector('#keyword');
+            item.onclick = () => {
+                keyword.value = item.parentElement.innerText; 
+                document.querySelectorAll('.bi-pencil-fill').forEach(li => li.id = '');
+                item.id = 'selected';
+            }
+        })
+        function process(e) {
+            e.preventDefault();
+            let keyword = document.querySelector('#keyword');
+            let selectedLi = document.querySelector('#selected');
+            selectedLi.parentElement.firstChild.nodeValue = keyword.value;
+            keyword.value = '';
+            selectedLi.id = '';
+
+        }
+    </script>
 
 </body>
 
