@@ -53,6 +53,20 @@
         integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
         </script>
 
+    <script>
+        let keyword=document.querySelector('#keyword');
+        keyword.oninput = () => {
+            document.querySelectorAll('.list-group-item:not(.list-group-item-action)').forEach(item => {
+                if (item.innerText.indexOf(keyword.value) >= 0) {
+                    item.style.display='block';
+                }
+                else {
+                    item.style.display='none';
+                }
+            })
+        }
+    </script>
+
 </body>
 
 </html>
