@@ -48,6 +48,39 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
         integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
         </script>
+
+    <script>
+        function addItem(e) {
+            e.preventDefault();
+            let keyword = document.querySelector('#keyword');
+            if (keyword.value.trim()) {
+                let items = JSON.parse(localStorage.getItem('items')) || [];
+                items.push(keyword.value.trim());
+                localStorage.setItem('items', JSON.stringify(items));
+                keyword.value = '';
+                displayList();
+            }
+        }
+        function clearItems() {
+            if (confirm('Do you really want to clear all')) {
+                localStorage.clear('items');
+                displayList();
+            }
+        }
+        function displayList() {
+            let items = JSON.parse(localStorage.getItem('items')) || [];
+            let list = document.querySelector('#myList');
+            list.innerHTML = '';
+            items.forEach(item => {
+                let li = document.createElement('li');
+                li.className = 'list-group-item';
+                li.innerText = item;
+                list.appendChild(li);
+            });
+        }
+        displayList();
+    </script>
+
 </body>
 
 </html>
