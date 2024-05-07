@@ -79,6 +79,11 @@
 
         document.querySelector("#password").onchange = checkPassword;
         document.querySelector("#confirmPassword").oninput = checkPassword;
+
+        document.querySelector("form").addEventListener("submit", (event) => {
+            event.preventDefault()
+            alert("Thank you for your submission!");
+        });
     </script>
 
 </body>
