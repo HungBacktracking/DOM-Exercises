@@ -21,7 +21,7 @@
     <main>
         <h1 class="text-center py-3">Ex06 - Add Item</h1>
         <div class="container">
-            <form action="#" method="post">
+            <form action="#" method="post"  onsubmit="addItem(event)">
                 <div class="mb-3">
                     <label for="" class="form-label">Item</label>
                     <input type="text" class="form-control" name="keyword" id="keyword" aria-describedby="helpId"
@@ -46,6 +46,21 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
         integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
         </script>
+
+    <script>
+        function addItem(e) {
+            e.preventDefault();
+            let keyword = document.querySelector('#keyword').value.trim();
+            if (keyword) {
+                let list = document.querySelector('#myList');
+                let li = document.createElement('li');
+                li.className = 'list-group-item';
+                li.innerText = keyword;
+                list.insertBefore(li, list.firstChild);
+            }
+        }
+    </script>
+
 </body>
 
 </html>
